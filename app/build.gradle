@@ -23,15 +23,18 @@ android {
     }
 }
 
-repositories {
-    flatDir {
-        dirs './libs', '../../../libraries'
-    }
-}
-
 dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile (name: 'arcore_client', ext: 'aar')
     compile (name: 'obj-0.2.1', ext: 'jar')
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support:design:25.0.0'
+}
+
+allprojects {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
